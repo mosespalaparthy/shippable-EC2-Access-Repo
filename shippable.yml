@@ -30,9 +30,19 @@ build:
     # http://docs.shippable.com/ci/advancedOptions/retry/
     - shippable_retry npm install
     - echo "$(shipctl get_integration_resource_field SONAR-SERVER "Key")"
-    - ssh -i $(shipctl get_integration_resource_field SONAR-SERVER "Key") centos@54.90.245.228 "mkdir /tmp/sample"
     - mkdir -p $TEST_RESULTS_DIR && mkdir -p $CODE_COVERAGE_DIR
 
+jobs:
+
+  ## Job description:
+  ## - single task
+  - name: container_single_task
+    type: runSh
+    steps:
+      - TASK:
+          name: task
+          script:
+            - ssh -i $(shipctl get_integration_resource_field SONAR-SERVER "Key") centos@54.90.245.228 "mkdir /tmp/sample"
 
 # Integrations are used to connect external resources to CI
 # http://docs.shippable.com/integrations/overview/

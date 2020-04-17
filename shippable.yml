@@ -22,15 +22,15 @@ resources:
     type: integration
     integration: "SONAR-SERVER"
 
-build:
+#build:
 
   # http://docs.shippable.com/ci/shippableyml/#ci
-  ci:
+#  ci:
     # npm mirrors can sometimes be flacky, better to use shippable_retry
     # http://docs.shippable.com/ci/advancedOptions/retry/
-    - shippable_retry npm install
-    - echo "$(shipctl get_integration_resource_field SONAR-SERVER "Key")"
-    - mkdir -p $TEST_RESULTS_DIR && mkdir -p $CODE_COVERAGE_DIR
+#    - shippable_retry npm install
+#    - echo "$(shipctl get_integration_resource_field SONAR-SERVER "Key")"
+#    - mkdir -p $TEST_RESULTS_DIR && mkdir -p $CODE_COVERAGE_DIR
 
 jobs:
 

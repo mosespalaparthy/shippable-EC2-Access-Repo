@@ -42,7 +42,7 @@ jobs:
       - TASK:
           name: task
           script:
-            - ssh -i $(shipctl get_integration_resource_field SONAR-SERVER "Key") centos@54.90.245.228 "mkdir -p /tmp/sample"
+            - ssh -i $(shipctl get_integration_resource_field SONAR-SERVER "Key") centos@54.90.245.228 "mkdir -p /home/centos/sample"
 
 # Integrations are used to connect external resources to CI
 # http://docs.shippable.com/integrations/overview/

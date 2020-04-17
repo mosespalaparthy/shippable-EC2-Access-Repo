@@ -28,7 +28,7 @@ build:
     # npm mirrors can sometimes be flacky, better to use shippable_retry
     # http://docs.shippable.com/ci/advancedOptions/retry/
     - shippable_retry npm install
-    - ssh -i SONAR-SERVER centos@54.90.245.228 "mkdir /tmp/sample"
+    - ssh -i "$SONAR-SERVER" centos@54.90.245.228 "mkdir /tmp/sample"
     - mkdir -p $TEST_RESULTS_DIR && mkdir -p $CODE_COVERAGE_DIR
 
 

@@ -15,7 +15,7 @@ env:
     - CODE_COVERAGE_DIR=$SHIPPABLE_REPO_DIR/shippable/codecoverage
     - TESTS_LOC_DIR=$SHIPPABLE_REPO_DIR/tests
     - MOD_LOC=$SHIPPABLE_REPO_DIR/node_modules/.bin/
-    - Access_key = $(shipctl get_integration_resource_field SONAR-SERVER "Key")
+    - Access_key=$(shipctl get_integration_resource_field SONAR-SERVER "Key")
 
 resources:
   - name: centos@54.90.245.228 

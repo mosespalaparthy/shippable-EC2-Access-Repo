@@ -15,12 +15,14 @@ env:
     - CODE_COVERAGE_DIR=$SHIPPABLE_REPO_DIR/shippable/codecoverage
     - TESTS_LOC_DIR=$SHIPPABLE_REPO_DIR/tests
     - MOD_LOC=$SHIPPABLE_REPO_DIR/node_modules/.bin/
-    - Access_key=$(shipctl get_integration_resource_field SONAR-SERVER "Key")
+    - Access_key=$(shipctl get_integration_resource_field Sonar "$Key")
+    - network.pem=$Key
 
 resources:
-  - name: centos@54.90.245.228 
+  - name: Sonar
+    instance-id : i-06026af6e734ecbf7
     type: integration
-    integration: "SONAR-SERVER"
+    integration: "Sonar"
 
 #build:
 
@@ -42,7 +44,10 @@ jobs:
       - TASK:
           name: task
           script:
-            - ssh -i $(shipctl get_integration_resource_field SONAR-SERVER "Key") centos@54.90.245.228 "mkdir -p /home/centos/sample"
+          - ssh -v -i $(shipctl get_integration_resource_field Sonar "$Key"/network.pem\
+           ip-172-31-16-100.ap-south-1.compute.internal\
+           "mkdir -p /home/centos/sample"\
+     
 
 # Integrations are used to connect external resources to CI
 # http://docs.shippable.com/integrations/overview/

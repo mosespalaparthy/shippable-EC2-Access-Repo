@@ -19,7 +19,7 @@ env:
     - network.pem=$Key
 
 resources:
-  - name: Sonar
+  - name: ec2-user@13.234.232.167
     instance-id : i-06026af6e734ecbf7
     type: integration
     integration: "Sonar"
@@ -46,7 +46,7 @@ jobs:
           script:
           - ssh -v -i $(shipctl get_integration_resource_field Sonar "$Key"/network.pem\
            ip-172-31-16-100.ap-south-1.compute.internal\
-           "mkdir -p /home/centos/sample"\
+           "mkdir -p /home/ec2-user/sample"\
      
 
 # Integrations are used to connect external resources to CI
